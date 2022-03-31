@@ -1,0 +1,13 @@
+.section-header{
+    min-height: 100vh;
+    background-color: #E7F8F8;
+}
+
+.header__logo{
+    font-size: 15rem;
+
+    &__svg{
+        width: 6.8rem;
+    }
+}
+

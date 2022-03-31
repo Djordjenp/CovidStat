@@ -1,4 +1,6 @@
-// Global Styles
+/* Global styles*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+@import "styles/variables.css";
 
 *,
 *::before,
@@ -10,6 +12,32 @@
 
 html{
     box-sizing: border-box;
-    font-size: 62.5%;
+    font-size: 62.5%; /* 10px */
+
+}
+
+body{
+    background-color: var(--bg-clr-1);
+    font-family: 'Lato', sans-serif;
+
+}
+
+a:link,
+a:visited{
+    text-decoration: none;
+}
+
+.container{
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.flex-row{
+    display: flex;
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
 }
 

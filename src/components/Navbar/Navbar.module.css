@@ -1,0 +1,28 @@
+.header__logo{
+    font-size: 2.5rem;
+    color: var(--text-clr);
+    margin-left: 2rem;
+    display: flex;
+    align-items: baseline;
+    
+    @media (min-width: 43.75em) {
+        margin-left: 4rem;
+        font-size: 3rem;
+    }
+
+    @media (min-width: 75em) {
+        font-size: 3.5rem;
+    }
+
+    &__svg{
+        width: .5em;
+    }
+}
+
+.header{
+    height: 6rem;
+    background-color: var(--clr-green);
+    display: flex;
+    align-items: center;
+}
+

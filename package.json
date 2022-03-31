@@ -17,6 +17,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^1.0.7",
     "postcss": "^8.4.8",
+    "postcss-import": "^14.0.2",
     "postcss-nested": "^5.0.6",
     "vite": "^2.8.0"
   }
