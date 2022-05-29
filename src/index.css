@@ -41,3 +41,24 @@ a:visited{
     flex-direction: column;
 }
 
+
+
+.hidden{
+    opacity: 0;
+    visibility: hidden;
+}
+
+.continent__graph{
+    display: flex;
+    flex-direction: column;
+}
+
+.continent__graph h3{
+    font-size: 3rem;
+    letter-spacing: 1px;
+
+}
+
+.continent__graph p{
+    font-size: 2rem;
+}

@@ -1,0 +1,7 @@
+.continental__legends{
+    display: flex;
+    flex-direction: column;
+    gap: 3em;
+    align-self: center;
+
+}

@@ -4,5 +4,19 @@
     --clr-violet: #7950F2;
     --clr-green: #12B886;
     --text-clr: #333;
-    --clr-gray: #868E96
+    --clr-gray: #686a6c;
+
+    --europe-color: hsl(159, 69%, 75%);
+    --africa-color: hsl(39, 100%, 76%);
+    --asia-color: hsl(6, 93%, 71%);
+    --north-america-color: hsl(336, 91%, 83%);
+    --south-america-color: hsl(206, 76%, 42%);
+    --australia-oceania-color: hsl(249, 83%, 56%);
+
+    --asia-color-dark: hsl(6, 93%, 51%);
+    --africa-color-dark: hsl(39, 100%, 56%);
+    --europe-color-dark: hsl(159, 69%, 55%);
+    --north-america-color-dark: 	hsl(336, 91%, 63%);
+    --south-america-color-dark: hsl(206, 76%, 22%);
+    --australia-oceania-color-dark: hsl(249, 83%, 36%);
 }

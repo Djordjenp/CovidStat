@@ -1,0 +1,34 @@
+
+.canvas{
+    position: relative;
+    max-width: 60rem;
+    overflow: visible;
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+}
+
+.svg{
+
+}
+
+
+.piechart__tooltip{
+    position: absolute;
+    background-color: rgba(255,255,255,.7);
+    pointer-events: none;
+    min-width: 180px;
+
+    padding: .5em 1em;
+    font-size: 2rem;
+}
+
+.piechart__tooltip__title::before{
+    content: attr(data-cases);
+}
+
+
+
+.piechart__path{
+    transition: all 250ms ease;
+}

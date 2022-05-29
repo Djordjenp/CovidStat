@@ -1,0 +1,49 @@
+
+.continent__data{
+    display: flex;
+    flex-direction: column;
+
+}
+
+.bar__fill{
+    height: 2.5em;
+    border-radius: 1rem;
+}
+
+.bar__fill--europe{
+    background-color: var(--europe-color);
+}
+
+.bar__fill--north-america{
+    background-color: var(--north-america-color);
+}
+
+.bar__fill--south-america{
+    background-color: var(--south-america-color);
+}
+
+.bar__fill--africa{
+    background-color: var(--africa-color);
+}
+
+.bar__fill--asia{
+    background-color: var(--asia-color);
+}
+
+.bar__fill--australia-oceania{
+    background-color: var(--australia-oceania-color);
+}
+
+.continent__data__info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.continent__data__info h4{
+    font-size: 2rem;
+}
+
+.continent__data__info p{
+    font-size: 1.5rem;
+}
