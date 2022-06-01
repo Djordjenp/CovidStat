@@ -6,11 +6,13 @@ import Loading from "../Loading/Loading";
 import CountryCard from "../CountryCard/CountryCard";
 import {useInfinityScrollObserver} from "../../hooks/useInfinityScrollObserver";
 import {useEffect, useReducer, useRef, useState} from "react";
+import {notEqual, whenIs} from "../../helpers/utils";
 
 const countriesLens = lensProp('countriesDisplayed')
 const countriesDataLens = lensProp('countriesData')
 const numOfCountriesLens = lensProp('numOfCountries')
 const sortMethodLens = lensProp('sortMethod')
+const loadingLens = lensProp('loading')
 
 
 const activeSortStyle = {
@@ -24,13 +26,14 @@ const countriesReducer = (state, {type, val}) => {
         [equals("SET_COUNTRIES_NUM"), () => set(numOfCountriesLens, val, state)],
         [equals("SET_SORT_METHOD"), () => set(sortMethodLens, val, state)],
         [equals("SET_DATA"), () => set(countriesDataLens, val, state)],
-        [equals("RESET_COUNTRIES"), () => ({countriesDisplayed: [], numOfCountries: 0, sortMethod: val, countriesData: null})]
+        [equals("SET_LOADING"), () => set(loadingLens, val, state)],
+        [equals("RESET_COUNTRIES"), () => ({countriesDisplayed: [], numOfCountries: 0, sortMethod: val, countriesData: null, loading: true})]
     ]) (type)
 }
 
 const CountriesSection = () => {
 
-    let [countries, dispatchFn] = useReducer(countriesReducer, {countriesDisplayed: [], numOfCountries: 0, sortMethod: 'cases', countriesData: null})
+    let [countries, dispatchFn] = useReducer(countriesReducer, {countriesDisplayed: [], numOfCountries: 0, sortMethod: 'cases', countriesData: null, loading: true})
     let [error, setError] = useState(null)
 
     const ref = useRef(null);
@@ -39,11 +42,11 @@ const CountriesSection = () => {
     // When Sort Method changes send GET REQUEST
     const data = useAsyncIO({sideEffectFunction: getCountriesData, args: [countries.sortMethod]}, [countries.sortMethod])
 
-
     useEffect(() => {
         if (data){
             data.fold(x => setError(x), countriesArr => {
                 dispatchFn({type: "SET_DATA", val: countriesArr})
+                dispatchFn({type: "SET_LOADING", val: false})
             })
         }
     }, [data])
@@ -70,14 +73,17 @@ const CountriesSection = () => {
 
     useEffect(() => {
         const shouldDisplayMoreCountries = and(isRefVisible, isNotEmpty(countries.countriesDisplayed))
-
         shouldDisplayMoreCountries && dispatchFn({type: 'SET_COUNTRIES_NUM', val: countries.numOfCountries + 20})
     }, [isRefVisible])
 
 
     const sortCountriesBy = criteria => (e) => {
         e.preventDefault();
-        dispatchFn({type: "RESET_COUNTRIES", val: criteria})
+        // if (notEqual(criteria, countries.sortMethod)){
+        //     dispatchFn({type: "RESET_COUNTRIES", val: criteria})
+        // }
+        whenIs(criteria,notEqual(countries.sortMethod)) (() => dispatchFn({type: "RESET_COUNTRIES", val: criteria}))
+
     }
 
 
@@ -90,9 +96,13 @@ const CountriesSection = () => {
                 <a style={countries.sortMethod === '' ? activeSortStyle : null} href="#" onClick={sortCountriesBy('')} className={styles.countries__sort__option}>By Name</a>
             </div>
 
-            <div className={styles.countries__grid}>
-                {error ? <p>Ooops Something Went Wrong</p> : countries.countriesDisplayed}
-            </div>
+            {countries.loading ?
+                <Loading />
+                    :
+                <div className={styles.countries__grid}>
+                    {error ? <p>Ooops Something Went Wrong</p> : countries.countriesDisplayed}
+                </div>
+            }
 
             <div ref={ref} />
         </section>
@@ -102,62 +112,3 @@ const CountriesSection = () => {
 
 export default CountriesSection;
 
-
-
-
-// const CountriesSection = () => {
-//
-//     let [error, setError] = useState(null)
-//     let [loadedCountries, setLoadedCountries] = useState([])
-//     let [loadedCountriesNum, setLoadedCountriesNum] = useState(0)
-//     const ref = useRef(null);
-//     const isVisible = useInfinityScrollObserver(ref)
-//
-//     const data = useAsyncIO({sideEffectFunction: getCountriesData, args: ['cases']})
-//
-//
-//     useEffect(() => {
-//         if (data){
-//             data.fold(x => setError(x), countries => {
-//                 const countriesToLoad =
-//                     countries.slice(loadedCountriesNum, loadedCountriesNum + 20)
-//                         .map(country =>
-//                             <CountryCard
-//                                 key={country.countryInfo._id}
-//                                 country={country.country}
-//                                 flag={country.countryInfo.flag}
-//                                 continent={country.continent}
-//                                 infected={country.cases}
-//                                 recovered={country.recovered}
-//                                 deaths={country.deaths}
-//                             />)
-//
-//                 setLoadedCountries(prevCountries => {
-//                     return [...prevCountries, ...countriesToLoad]
-//                 })
-//             })
-//         }
-//     }, [loadedCountriesNum, data])
-//
-//     useEffect(() => {
-//         if (isVisible){
-//             console.log("IS VISIBLE")
-//             setLoadedCountriesNum(previousNum => {
-//                 return previousNum + 20
-//             })
-//         }
-//     }, [isVisible])
-//
-//
-//
-//
-//
-//     return (
-//         <section ref={ref} className={styles['section-countries']}>
-//             {loadedCountries}
-//         </section>
-//     )
-//
-// }
-//
-// export default CountriesSection;

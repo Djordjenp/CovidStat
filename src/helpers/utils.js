@@ -1,9 +1,11 @@
-import {curry} from "ramda";
+import {curry, when} from "ramda";
 import {IO} from "monio";
 
-export const notEqual = (firstVal, secondVal) => {
+export const notEqual = curry((firstVal, secondVal) => {
     return firstVal !== secondVal;
-}
+})
+
+export const whenIs = curry((data, predicate, onTrue) =>  when(predicate, onTrue, data))
 
 export const isEqual = (firstVal, secondVal) => {
     return firstVal === secondVal
