@@ -6,7 +6,7 @@ import Loading from "../Loading/Loading";
 import CountryCard from "../CountryCard/CountryCard";
 import {useInfinityScrollObserver} from "../../hooks/useInfinityScrollObserver";
 import {useEffect, useReducer, useRef, useState} from "react";
-import {notEqual, whenIs} from "../../helpers/utils";
+import {isNotNil, notEqual, whenIs} from "../../helpers/utils";
 
 const countriesLens = lensProp('countriesDisplayed')
 const countriesDataLens = lensProp('countriesData')
@@ -53,22 +53,40 @@ const CountriesSection = () => {
 
 
     useEffect(() => {
-        if (countries.countriesData){
-            const countriesToLoad =
-                countries.countriesData.slice(countries.numOfCountries, countries.numOfCountries + 20)
-                    .map(country => {
-                        return <CountryCard
-                            key={country.countryInfo._id || country.country}
-                            country={country.country}
-                            flag={country.countryInfo.flag}
-                            continent={country.continent}
-                            infected={country.cases}
-                            recovered={country.recovered}
-                            deaths={country.deaths}
-                        />})
+        // if (countries.countriesData){
+        //     const countriesToLoad =
+        //         countries.countriesData.slice(countries.numOfCountries, countries.numOfCountries + 20)
+        //             .map(country => {
+        //                 return <CountryCard
+        //                     key={country.countryInfo._id || country.country}
+        //                     country={country.country}
+        //                     flag={country.countryInfo.flag}
+        //                     continent={country.continent}
+        //                     infected={country.cases}
+        //                     recovered={country.recovered}
+        //                     deaths={country.deaths}
+        //                 />})
+        //
+        //     dispatchFn({type: "SET_COUNTRIES", val: countriesToLoad})
+        // }
 
-            dispatchFn({type: "SET_COUNTRIES", val: countriesToLoad})
-        }
+        whenIs(countries.countriesData)(isNotNil) (() => {
+            const countriesToLoad = countries.countriesData.slice(countries.numOfCountries, countries.numOfCountries + 20)
+                        .map(country => {
+                            return <CountryCard
+                                key={country.countryInfo._id || country.country}
+                                country={country.country}
+                                flag={country.countryInfo.flag}
+                                continent={country.continent}
+                                infected={country.cases}
+                                recovered={country.recovered}
+                                deaths={country.deaths}
+                            />})
+
+                dispatchFn({type: "SET_COUNTRIES", val: countriesToLoad})
+        })
+
+        
     }, [countries.countriesData, countries.numOfCountries])
 
     useEffect(() => {

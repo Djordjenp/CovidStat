@@ -1,4 +1,4 @@
-import {curry, when} from "ramda";
+import {curry, isNil, not, when} from "ramda";
 import {IO} from "monio";
 
 export const notEqual = curry((firstVal, secondVal) => {
@@ -10,6 +10,8 @@ export const whenIs = curry((data, predicate, onTrue) =>  when(predicate, onTrue
 export const isEqual = (firstVal, secondVal) => {
     return firstVal === secondVal
 }
+
+export const isNotNil = val => not(isNil(val))
 
 export const formatter = Intl.NumberFormat('en', {notation: 'compact'});
 
