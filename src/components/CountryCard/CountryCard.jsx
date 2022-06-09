@@ -1,9 +1,8 @@
 import styles from './CountryCard.module.css'
-import {defaultTo, numberWithCommas} from "../../helpers/utils";
+import {pipe} from "ramda";
+import {prepProps} from "./CountryCardHelper";
 
 const CountryCard = ({country, flag, continent, infected, recovered, deaths}) => {
-
-    const defaultToNoData = defaultTo("No Data")
 
     return   (
         <figure className={styles.country}>
@@ -17,15 +16,15 @@ const CountryCard = ({country, flag, continent, infected, recovered, deaths}) =>
             <div className={styles.country__data}>
                 <div className={styles.country__data__infected}>
                     <p>Infected</p>
-                    <p>{defaultToNoData(numberWithCommas(infected))}</p>
+                    <p>{infected}</p>
                 </div>
                 <div className={styles.country__data__recovered}>
                     <p>Recovered</p>
-                    <p>{defaultToNoData(numberWithCommas(recovered))}</p>
+                    <p>{recovered}</p>
                 </div>
                 <div className={styles.country__data__deaths}>
                     <p>Deaths</p>
-                    <p>{defaultToNoData(numberWithCommas(deaths))}</p>
+                    <p>{deaths}</p>
                 </div>
             </div>
 
@@ -34,4 +33,4 @@ const CountryCard = ({country, flag, continent, infected, recovered, deaths}) =>
 }
 
 
-export default CountryCard;
+export default pipe(prepProps, CountryCard);

@@ -41,6 +41,15 @@ a:visited{
     flex-direction: column;
 }
 
+.flex-center{
+    justify-content: center;
+    align-items: center;
+}
+
+.margin-top-hg{
+    margin-top: 9.6rem !important;
+}
+
 
 
 .hidden{
@@ -61,4 +70,16 @@ a:visited{
 
 .continent__graph p{
     font-size: 2rem;
+}
+
+.link{
+    text-decoration: none;
+    color: inherit;
+}
+
+.button{
+   cursor: pointer;
+    border: 0;
+
+
 }

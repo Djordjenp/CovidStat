@@ -1,0 +1,46 @@
+.search{
+    margin-right: 4rem;
+    display: flex;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+
+    &__icon{
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    &__btn{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        right: 5px;
+        background: transparent;
+
+    }
+
+    &__input{
+        font-size: 1.5rem;
+        height: 1.9em;
+        width: 15em;
+        padding: 0 .5em;
+        border: 0;
+        border-radius: 50px;
+
+        &::-webkit-search-cancel-button{
+            display: none;
+        }
+
+        &:focus{
+            outline: 4px solid #0389d2;
+        }
+
+        &::placeholder{
+            color: #949292;
+        }
+    }
+}

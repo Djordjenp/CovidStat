@@ -8,7 +8,7 @@ import {isNil} from "ramda";
 import Loading from "../../components/Loading/Loading";
 import CountriesSection from "../../components/CountriesSection/CountriesSection";
 
-const Home = () => {
+const Home = ({searchedCountry, sectionCoordinatesFn}) => {
 
     const data = useAsyncIO({sideEffectFunction: getGlobalData})
 
@@ -36,7 +36,7 @@ const Home = () => {
 
                     <ContinentsSection/>
 
-                    <CountriesSection />
+                    <CountriesSection searchedCountry={searchedCountry}  sectionCoordinatesFn={sectionCoordinatesFn}/>
 
                 </>
             )
