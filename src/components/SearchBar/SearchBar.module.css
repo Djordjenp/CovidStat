@@ -1,10 +1,21 @@
 .search{
-    margin-right: 4rem;
+    //margin-right: 4rem;
+    flex-grow: 1;
     display: flex;
     align-items: center;
     font-family: 'Lato', sans-serif;
     position: relative;
+    //margin-right: 2rem;
+    
+    @media (min-width: 37.5em) {
+        flex-grow: 0;
+        margin-right: 2rem;
+    }
 
+    @media (min-width: 50em) {
+        margin-right: 4rem;
+    }
+    
     &__icon{
         width: 1.5rem;
         height: 1.5rem;
@@ -25,11 +36,21 @@
 
     &__input{
         font-size: 1.5rem;
+        flex-grow: 1;
         height: 1.9em;
-        width: 15em;
         padding: 0 .5em;
         border: 0;
         border-radius: 50px;
+
+        @media (min-width: 37.5em) {
+            flex-grow: 0;
+            width: 20rem;
+        }
+
+        @media (min-width: 50em) {
+            flex-grow: 0;
+            width: 25rem;
+        }
 
         &::-webkit-search-cancel-button{
             display: none;

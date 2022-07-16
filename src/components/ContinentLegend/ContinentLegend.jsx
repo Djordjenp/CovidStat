@@ -1,8 +1,6 @@
 import styles from './ContinentLegend.module.css'
 import {formatter} from "../../helpers/utils";
 
-
-
 const ContinentLegend = ({continent, continentCases, continentWithMostCases, onMouseOver, onMouseOut}) => {
 
     const styleClass = `bar__fill--${continent}`

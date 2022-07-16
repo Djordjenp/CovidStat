@@ -6,6 +6,10 @@
     --text-clr: #333;
     --clr-gray: #686a6c;
 
+    --card-recovered: #12B886;
+    --card-cases: #7950F2;
+    --card-deaths: #F03E3E;
+
     --europe-color: hsl(159, 69%, 75%);
     --africa-color: hsl(39, 100%, 76%);
     --asia-color: hsl(6, 93%, 71%);

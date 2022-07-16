@@ -1,11 +1,14 @@
 import styles from "./Tooltip.module.css"
-import { useLayoutEffect, useRef, useState} from "react";
+import {useEffect, useLayoutEffect, useRef, useState} from "react";
 import {__, add, always, cond, gt, lt, pipe, subtract, T} from "ramda";
 
 const Tooltip = ({parentWidth, parentX,color, position, date,infected, highlighted }) => {
 
     const [positions, setPositions] = useState({arrowAndBorderPosition: null, tooltipPosition: null})
     const tooltipRef = useRef(null)
+
+
+
 
     useLayoutEffect(() => {
             const tooltipWidth = tooltipRef.current.getBoundingClientRect().width
@@ -27,7 +30,7 @@ const Tooltip = ({parentWidth, parentX,color, position, date,infected, highlight
     }, [highlighted])
 
     return (
-        <div  style={{borderColor: color, transform: positions.tooltipPosition}}  ref={tooltipRef} className={`${styles.tooltip} ${highlighted ? undefined : 'hidden'} `} >
+        <div  style={{borderColor: color, transform: positions.tooltipPosition}} ref={tooltipRef} className={`${styles.tooltip} ${highlighted ? undefined : 'hidden'} `} >
             <div className={styles.tooltip__arrow}  style={{borderBottomColor: color, left: positions.arrowAndBorderPosition}} />
             <div className={styles.tooltip__border} style={{left: positions.arrowAndBorderPosition}}/>
             <h4 className={styles.tooltip__title}>Date: {date}</h4>

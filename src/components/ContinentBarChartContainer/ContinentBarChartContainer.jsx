@@ -1,9 +1,10 @@
 import styles from './ContinentBarChartContainer.module.css'
 import TheBarChart from "../Graphs/TheBarChart/TheBarChart";
 
+
 const ContinentBarChartContainer = ({continent, data, totalInfected}) => {
 
-    const capitalizeContinent = continent[0].toUpperCase() + continent.slice(1);
+    const capitalizeContinent = continent[0].toUpperCase() + continent.slice(1).split('_').join(' ');
 
     return (
         <div className={styles.continent__graph}>

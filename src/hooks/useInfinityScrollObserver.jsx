@@ -15,6 +15,9 @@ export function useInfinityScrollObserver(ref) {
 
 
     useEffect(() => {
+
+        let element;
+
         const options = {
             root: null,
             rootMargin: '0px',
@@ -26,16 +29,17 @@ export function useInfinityScrollObserver(ref) {
 
         // If we have a ref value, start observing it
         if (ref.current) {
-            observer.observe(ref.current);
+            element = ref.current;
+            observer.observe(element);
         }
 
         // If unmounting, disconnect the observer
         return () => {
-            observer.unobserve(ref.current)
+            observer.unobserve(element)
             observer.disconnect();
         }
 
-    }, [handleIntersection]);
+    }, [ref.current, handleIntersection]);
 
     return isVisible;
 }

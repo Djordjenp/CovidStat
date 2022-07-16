@@ -2,7 +2,7 @@ import styles from './TheBarChart.module.css'
 import * as d3 from 'd3'
 import XAxis from "./XAxis";
 import YAxis from "./YAxis";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import {numberWithCommas} from "../../../helpers/utils";
 import Tooltip from "../../Tooltip/Tooltip";
 
@@ -30,6 +30,8 @@ const TheBarChart = ({data, color}) => {
             middleOfBarXPosition: barRefs.current[index].getBoundingClientRect()?.x + barRefs.current[index].getBoundingClientRect()?.width / 2
         })
     }
+
+
 
     const mouseOutHandler = () => {
         setHighlighted(false)

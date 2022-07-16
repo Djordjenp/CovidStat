@@ -3,6 +3,7 @@ import ContinentsPieChartContainer from "../ContinentsPieChartContainer/Continen
 import csv from '../../assets/SixContinentFirst.csv'
 import ContinentBarChartContainer from "../ContinentBarChartContainer/ContinentBarChartContainer";
 import {numberWithCommas} from "../../helpers/utils";
+import React from "react";
 
 
 const data = csv.reduce((prev,next) => {
@@ -36,18 +37,7 @@ const total = {
     australia_oceania: australia_oceania_Total
 }
 
-
-
-
-
-
 const ContinentsSection = () => {
-
-    // const data = useIO({sideEffectFunction: fetchCountriesOfContinent, args:['europe']})
-    //
-    // logIf(data)(isNotNil)
-
-
 
     return (
         <section className={styles['section-continental']}>
@@ -58,4 +48,4 @@ const ContinentsSection = () => {
 
 }
 
-export default ContinentsSection;
+export default React.memo(ContinentsSection);

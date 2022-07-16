@@ -1,0 +1,14 @@
+.nav{
+    margin-left: auto;
+
+    &__list{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        list-style: none;
+        font-size: 1.7rem;
+        gap: 1.2em;
+        margin-right: 1em;
+    }
+}

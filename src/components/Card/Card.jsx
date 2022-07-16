@@ -1,14 +1,18 @@
 import styles from "./Card.module.css"
 import {always, cond, equals, T} from "ramda";
-const Card = ({color, type}) => {
+import {numberWithCommas} from "../../helpers/utils";
+
+const Card = ({type, data, date}) => {
 
    const typeOfCard = cond([
-        [equals('death'), always('GLOBALLY DIED')],
-        [equals('recovery'), always('GLOBALLY RECOVERED')],
+        [equals('deaths'), always('GLOBALLY DIED')],
+        [equals('recovered'), always('GLOBALLY RECOVERED')],
         [T, always('GLOBALLY INFECTED')]
     ]);
 
     const cardTitle = typeOfCard(type)
+
+    const normalDate = new Date(date).toLocaleDateString('en-US')
 
     const pseudoElement = {
         position: 'absolute',
@@ -17,15 +21,15 @@ const Card = ({color, type}) => {
         left: 0,
         width: '100%',
         height: '3%',
-        backgroundColor: color,
+        backgroundColor: `var(--card-${type})`,
     }
 
     return (
         <figure className={`${styles.card} flex-col`}>
             <div style={pseudoElement} />
             <figcaption className={`${styles['card__info--text']} flex`}>{cardTitle}</figcaption>
-            <span className={`${styles['card__info--number']}`} style={{color}}>5,856,224</span>
-            <span className={`${styles['card__info--date']}`}>22.10.2022</span>
+            <span className={`${styles['card__info--number']}`} style={{color:  `var(--card-${type})`}}>{numberWithCommas(data)}</span>
+            <span className={`${styles['card__info--date']}`}>Last Updated: {normalDate}</span>
         </figure>
     )
 }

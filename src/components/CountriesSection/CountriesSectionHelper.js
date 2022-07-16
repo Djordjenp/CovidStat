@@ -14,9 +14,9 @@ export const byCriteriaAsc = criteria => (a, b) => {
         a[criteria] < b[criteria] ? -1 : 0
 }
 
-export const whereEquals = arr => val => {
-   return cond(arr.map(condition => [equals(condition[0]), always(condition[1])])) (val)
-}
+export const whereEquals = arr =>
+    cond(arr.map(condition => [equals(condition[0]), condition[1]]))
+
 
 
 

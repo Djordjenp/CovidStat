@@ -1,0 +1,16 @@
+
+.country__details{
+    display: flex;
+    align-items: center;
+    margin: 5rem auto 5rem auto;
+    width: 80%;
+}
+
+.country__details__image{
+    width: 25rem;
+}
+
+.country__details__name{
+    margin-left: 9rem;
+    font-size: 7rem;
+}

@@ -78,8 +78,12 @@ a:visited{
 }
 
 .button{
-   cursor: pointer;
-    border: 0;
+    cursor: pointer;
+    border-style: none;
+    background: none;
+}
 
-
+.leaflet-container {
+    width: 100wh;
+    height: 100vh;
 }

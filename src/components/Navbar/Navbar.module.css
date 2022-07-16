@@ -1,47 +1,33 @@
-.header__logo{
-    font-size: 2.5rem;
-    color: var(--text-clr);
-    margin-left: 2rem;
-    display: flex;
-    align-items: baseline;
-    
-    @media (min-width: 43.75em) {
-        margin-left: 4rem;
-        font-size: 3rem;
-    }
-
-    @media (min-width: 75em) {
-        font-size: 3.5rem;
-    }
-
-    &__svg{
-        width: .5em;
-    }
-}
-
 .header{
     height: 6rem;
     background-color: var(--clr-green);
     display: flex;
     align-items: center;
+    width: 100%;
+    gap: 1rem;
+    justify-content: space-between;
+    transition: all 0.5s ease-out;
+}
+
+
+
+.sticky{
     position: fixed;
     top: 0;
-    width: 100%;
     z-index: 10;
+    animation: fade-in 0.5s ease-out;
 }
 
-.nav{
-    margin-left: auto;
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
 
-    &__list{
-        display: flex;
-        align-items: center;
-        text-decoration: none;
-        list-style: none;
-        font-size: 1.7rem;
-        gap: 1.2em;
-        margin-right: 2em;
+    to {
+        opacity: 1;
     }
 }
+
+
 
 

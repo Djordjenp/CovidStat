@@ -1,11 +1,18 @@
 import styles from './CountryCard.module.css'
 import {pipe} from "ramda";
 import {prepProps} from "./CountryCardHelper";
+import { useNavigate } from "react-router-dom";
 
 const CountryCard = ({country, flag, continent, infected, recovered, deaths}) => {
 
+    const navigate = useNavigate()
+
+    function goCountryPage() {
+        navigate(`/country`)
+    }
+
     return   (
-        <figure className={styles.country}>
+        <figure onClick={goCountryPage} className={styles.country}>
 
             <header className={styles.country__header}>
                 <img className={styles.country__img} src={flag} alt="Country Flag"/>

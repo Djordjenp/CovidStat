@@ -1,4 +1,4 @@
-import {complement, curry, empty, isEmpty, isNil, not, when} from "ramda";
+import {complement, curry, empty, ifElse, isEmpty, isNil, not, when} from "ramda";
 import {IO} from "monio";
 
 export const notEqual = curry((firstVal, secondVal) => {
@@ -6,10 +6,6 @@ export const notEqual = curry((firstVal, secondVal) => {
 })
 
 export const whenIs = curry((data, predicate, onTrue) =>  when(predicate, onTrue, data))
-
-export const isEqual = (firstVal, secondVal) => {
-    return firstVal === secondVal
-}
 
 export const isNotNil = val => not(isNil(val))
 
@@ -19,13 +15,24 @@ export const notNil = isNotNil;
 
 export const notEmpty = arr => complement(isEmpty(arr))
 
-export const execute = fn => fn()
 
 export const notEmptyString = val => val !== ''
 
 export const formatter = Intl.NumberFormat('en', {notation: 'compact'});
 
-export const defaultTo = defaultVal => val => val === 0 || val === '' || val === null || val === undefined || val === '0' ? defaultVal : val
+export const debounce = (cb, delay = 1000) => {
+    let timeout;
+
+    return (...args) => {
+        clearTimeout(timeout)
+        timeout = setTimeout(() => {
+            cb(...args)
+        }, delay)
+
+        return timeout;
+    }
+}
+
 
 export const removeClassIO = curry((className, element) =>
     IO(() => {

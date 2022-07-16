@@ -13,13 +13,16 @@ export default function useResizeObserver(elRef, breakpoints) {
     )
 
     useEffect(() => {
+        let element;
         if (elRef.current) {
-            observer.current.observe(elRef.current)
+            element = elRef.current;
+            observer.current.observe(element)
         }
         return () => {
-            observer.current.unobserve(elRef.current)
+            observer.current.unobserve(element)
+            observer.current.disconnect()
         }
-    }, [elRef, observer])
+    }, [elRef.current, observer])
 
     return breakSize
 }
