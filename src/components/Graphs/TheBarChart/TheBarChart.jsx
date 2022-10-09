@@ -79,18 +79,24 @@ const TheBarChart = ({data, color, ticks, yAxisValues, maxYValueFn, xAxisValues,
             middleOfBarXPosition: barRefs.current[yValIndex].getBoundingClientRect()?.x + barRefs.current[yValIndex].getBoundingClientRect()?.width / 2
         })
 
-
-
-
     }
 
+    const resetTouch = () => {
+        setHighlighted(false);
+        setSelectedData({index: null, date: '', infected: 0})
+        setPositions({
+            startingXPosition: undefined,
+            width: undefined,
+            middleOfBarXPosition: undefined
+        })
+    }
 
 
     return (
         <div>
             <svg ref={svgRef} className={styles.svg} viewBox={`0 0 ${width} ${height}`}
                  preserveAspectRatio={'xMinYMin'}>
-                <g  ref={reactsRef} width={graphWidth} height={graphHeight} transform={`translate(${margin.left}, ${margin.top})`} onTouchMove={toucheMove}>
+                <g  ref={reactsRef} width={graphWidth} height={graphHeight} transform={`translate(${margin.left}, ${margin.top})`} onTouchMove={toucheMove} onTouchEnd={resetTouch}>
                     {data.map((d, i) =>
                         <g key={d[xBarCategory]} className={"rect-container"} >
                             <rect width={x.bandwidth() + x.bandwidth() * .1} height={graphHeight} x={x(d[xBarCategory])} y={0}
