@@ -80,6 +80,8 @@ const TheBarChart = ({data, color, ticks, yAxisValues, maxYValueFn, xAxisValues,
         })
 
 
+
+
     }
 
 

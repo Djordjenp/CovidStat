@@ -7,9 +7,6 @@ const Tooltip = ({parentWidth, parentX,color, position, date,infected, highlight
     const [positions, setPositions] = useState({arrowAndBorderPosition: null, tooltipPosition: null})
     const tooltipRef = useRef(null)
 
-
-
-
     useLayoutEffect(() => {
             const tooltipWidth = tooltipRef.current.getBoundingClientRect().width
 
@@ -27,7 +24,7 @@ const Tooltip = ({parentWidth, parentX,color, position, date,infected, highlight
 
             setPositions({arrowAndBorderPosition: arrowAndBorderPos(position), tooltipPosition: tooltipPosition(position)})
 
-    }, [highlighted])
+    }, [highlighted, position])
 
     return (
         <div  style={{borderColor: color, transform: positions.tooltipPosition}} ref={tooltipRef} className={`${styles.tooltip} ${highlighted ? undefined : 'hidden'} `} >

@@ -105,7 +105,7 @@ const LineChart = ({data, xAxisValues, yAxisValues, color, typeOfChart}) => {
                 .html(new Date(selectedData[0]).toLocaleDateString('en-US') + "  -  " + (selectedData[1] !== 0 ? numberWithCommas(selectedData[1]) + " " + typeOfChart : "No Data"))
                 .attr("x", width / 2  )
                 .attr('text-anchor', 'middle')
-                .attr("y", 12)
+                .attr("y", 0)
         }else {
             d3.select(circleRef.current).attr("opacity", 0) // When user hovers over y axis, circle doesn't appear
         }
@@ -127,7 +127,7 @@ const LineChart = ({data, xAxisValues, yAxisValues, color, typeOfChart}) => {
                 .html(new Date(selectedData[0]).toLocaleDateString('en-US') + "  -  " + (selectedData[1] !== 0 ? numberWithCommas(selectedData[1]) + " " + typeOfChart : "No Data"))
                 .attr("x", width / 2  )
                 .attr('text-anchor', 'middle')
-                .attr("y", 12)
+                .attr("y", 0)
         }else {
             d3.select(circleRef.current).attr("opacity", 0) // When user hovers over y axis, circle doesn't appear
         }
@@ -153,7 +153,7 @@ const LineChart = ({data, xAxisValues, yAxisValues, color, typeOfChart}) => {
 
 
     return (
-        <svg ref={svgRef} viewBox={`0 0 ${width} ${height}`} style={{overflow: "visible"}} onMouseOver={mouseOverHandler} onTouchStart={mouseOverHandler} onTouchMove={touchmove} onMouseMove={mousemove} onMouseOut={mouseOutHandler} preserveAspectRatio={'xMinYMin'} >
+        <svg ref={svgRef} viewBox={`0 0 ${width} ${height}`} style={{overflow: "visible"}} onMouseOver={mouseOverHandler}  onTouchMove={touchmove} onMouseMove={mousemove}  onMouseOut={mouseOutHandler} preserveAspectRatio={'xMinYMin'} >
 
 
 
@@ -173,7 +173,7 @@ const LineChart = ({data, xAxisValues, yAxisValues, color, typeOfChart}) => {
               <circle ref={circleRef} r={8.5} opacity={0} fill={"none"} stroke={color} />
             </g>
 
-            <g>
+            <g id={'linechart__text__info'}>
                 <text ref={textRef} fontWeight={"bold"} fill={color} opacity={0} alignmentBaseline={"middle"} textAnchor={"left"}></text>
             </g>
 
