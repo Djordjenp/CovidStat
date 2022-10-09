@@ -1,0 +1,81 @@
+
+.map__legend{
+    position: absolute;
+    background-color: white;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: .5em 1em;
+    row-gap: 1rem;
+    
+    @media (min-width: 59.37em) {
+        top: 5rem;
+        right: 3rem;
+    }
+}
+
+.map__legend__element{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.map__legend__color{
+    height: 1rem;
+    width: 1rem;
+
+
+
+    @media (min-width: 59.37em) {
+        height: 3rem;
+        width: 2rem;
+    }
+}
+
+.map__legend__info{
+    font-size: 1rem;
+    flex-grow: 1;
+
+
+
+    @media (min-width: 59.37em) {
+        font-size: 1.5rem;
+
+    }
+
+}
+
+.map__legend__icon{
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: white;
+    padding: .2em .6em;
+    transition: all .3s ease-out;
+
+    @media (min-width: 59.37em) {
+        top: 5rem;
+        right: 3rem;
+
+        padding: .5em 1em;
+    }
+
+    &:hover{
+        transform: translateY(-5px);
+    }
+
+    img{
+        width: 3.5rem;
+    }
+}
+
+.map__legend__close{
+    align-self: flex-end;
+    font-size: 1.5rem;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}

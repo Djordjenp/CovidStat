@@ -23,6 +23,8 @@
     font-size: 2rem;
 }
 
+
+
 .piechart__tooltip__title::before{
     content: attr(data-cases);
 }

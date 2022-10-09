@@ -1,8 +1,16 @@
-import {useEffect} from "react";
+import React, {useEffect} from "react";
 import styles from './Country.module.css'
 import WorldMap from "../../components/WorldMap/WorldMap";
+import {Outlet, useParams} from "react-router-dom";
+import useCountriesStore from "../../store/store";
+
+
 
 const Country = ({setStickyNav}) => {
+
+    const countriesData = useCountriesStore(state => state.countriesMapData)
+    const fetchCountries = useCountriesStore(state => state.fetch)
+    let { countryName } = useParams();
 
 
 
@@ -10,19 +18,25 @@ const Country = ({setStickyNav}) => {
         setStickyNav(true)
     }, [])
 
-    const position = [51.505, -0.09]
+
+    // If no countries' data in state then fetch them
+    useEffect(() => {
+        if(countriesData) return;
+        fetchCountries()
+    }, [countriesData])
+
+
 
 
     return (
         <section className={styles['section-countries']}>
             <WorldMap />
-
-            <div className={styles.country__details}>
-                <img className={styles['country__details__image']} src="https://www.segwaybeograd.rs/wp-content/uploads/2022/04/russian-flag-russian-flag-russia-flag-of-russia.jpg" alt="Country Flag"/>
-                <h2 className={styles['country__details__name']}>Russia</h2>
-            </div>
+            <Outlet />
         </section>
     )
 }
 
-export default Country;
+
+
+
+export default React.memo(Country);

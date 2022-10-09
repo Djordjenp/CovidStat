@@ -1,0 +1,33 @@
+.data__wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 100%;
+    flex-wrap: nowrap;
+
+    @media (min-width: 37.5em) {
+        flex-basis: 50%;
+    }
+
+    @media (min-width: 62.5em) {
+        flex-basis: 30%;
+    }
+
+    h2{
+       font-size: 4rem;
+        color: #868E96;
+        letter-spacing: 2px;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+
+
+    }
+
+    span{
+        font-size: 5rem;
+        font-weight: 600;
+        text-align: center;
+    }
+}

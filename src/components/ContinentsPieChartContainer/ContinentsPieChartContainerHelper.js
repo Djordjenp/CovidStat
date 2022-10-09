@@ -3,7 +3,7 @@ import {IO} from 'monio'
 import {
     addAttributeIO,
     addStyleIO,
-    addTextContentIO,
+    addTextContentIO, formatContinentName,
     notEqual,
     numberWithCommas,
     removeAttributeIO
@@ -71,8 +71,7 @@ export const setTooltipContent = (arc, tooltipTitle, tooltipCases) => IO.do(func
     const continent = arc.id
 
 
-
-    yield addTextContentIO(`${continent[0].toUpperCase() + continent.slice(1)}`, tooltipTitle)
+    yield addTextContentIO(`${formatContinentName(continent)}`, tooltipTitle)
     yield addTextContentIO(numberWithCommas(cases), tooltipCases)
 })
 

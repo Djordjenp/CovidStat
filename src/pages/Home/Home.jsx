@@ -10,7 +10,7 @@ const Home = ({searchedCountry, sectionCoordinatesFn, setStickyNav}) => {
         <>
             <HomeHeader setStickyNav={setStickyNav}/>
             <ContinentsSection/>
-            <CountriesSection searchedCountry={searchedCountry}  sectionCoordinatesFn={sectionCoordinatesFn}/>
+            <CountriesSection searchedCountry={searchedCountry} />
         </>
     )
 

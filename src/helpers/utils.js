@@ -1,4 +1,4 @@
-import {complement, curry, empty, ifElse, isEmpty, isNil, not, when} from "ramda";
+import {complement, curry, empty, ifElse, isEmpty, isNil, join, map, not, pipe, split, when} from "ramda";
 import {IO} from "monio";
 
 export const notEqual = curry((firstVal, secondVal) => {
@@ -14,7 +14,6 @@ export const isEmptyString = val => val === ''
 export const notNil = isNotNil;
 
 export const notEmpty = arr => complement(isEmpty(arr))
-
 
 export const notEmptyString = val => val !== ''
 
@@ -56,11 +55,11 @@ export const addStyleIO = curry(([prop, val], element) =>
     })
 )
 
-export const addAttributeIO = (([prop, val], element) =>
+export const addAttributeIO = ([prop, val], element) =>
     IO(() => {
         element.setAttribute(prop, val)
     })
-)
+
 
 export const removeAttributeIO = ((prop, element) =>
         IO(() => {
@@ -76,3 +75,9 @@ export const addTextContentIO = (text, element) =>
 export const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
+
+export const formatContinentName = pipe(
+    split('-'),
+    map(continentName => continentName[0].toUpperCase() + continentName.slice(1)),
+    join(' ')
+)

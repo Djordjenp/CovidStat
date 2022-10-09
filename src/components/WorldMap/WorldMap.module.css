@@ -1,10 +1,21 @@
 
 .svg__map{
+    background-color: #cbcccc;
     width: 100%;
-    min-height: 65vh;
+    height: 100%;
+    max-height: 60vh;
+    min-height: 50vh;
+    font-size: 0;
 
 }
 
 .svg__country{
-
+    stroke-width: .008;
+    stroke: #ffffff;
 }
+
+.wrapper{
+    position: relative;
+    overflow: hidden;
+}
+

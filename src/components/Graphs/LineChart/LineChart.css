@@ -1,0 +1,22 @@
+
+.grid__chart .tick{
+    opacity: 0.1
+}
+
+.grid__chart path{
+    opacity: 0.1;
+}
+
+.tick text{
+    color: #343a40;
+    font-size: 1.5rem;
+    
+    @media (min-width: 87.5em) {
+        font-size: 1.3rem;
+    }
+
+    @media (min-width: 106.25em) {
+        font-size: 1rem;
+    }
+}
+

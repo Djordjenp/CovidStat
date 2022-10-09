@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c92a2a;
+      }
+
+      .cls-2 {
+        fill: #e03131;
+      }
+
+      .cls-3 {
+        fill: #ff6b6b;
+      }
+
+      .cls-4 {
+        fill: #ffa8a8;
+      }
+    </style>
+  </defs>
+  <rect class="cls-1" x="127" y="62" width="781" height="130"/>
+  <rect id="Rectangle_1_copy" data-name="Rectangle 1 copy" class="cls-2" x="127" y="318" width="781" height="130"/>
+  <rect id="Rectangle_1_copy_2" data-name="Rectangle 1 copy 2" class="cls-3" x="127" y="574" width="781" height="130"/>
+  <rect id="Rectangle_1_copy_3" data-name="Rectangle 1 copy 3" class="cls-4" x="127" y="830" width="781" height="130"/>
+</svg>

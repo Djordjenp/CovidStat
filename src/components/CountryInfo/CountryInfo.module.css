@@ -1,0 +1,104 @@
+.country__info__header{
+    gap: 2rem;
+
+
+
+    @media (min-width: 87.5em) {
+        justify-content: flex-start;
+    }
+
+    &__title{
+        font-size: 3.2rem;
+        
+        @media (min-width: 31.25em) {
+            font-size: 4.8rem;
+        }
+
+        @media (min-width: 87.5em) {
+            font-size: 5.5rem;
+        }
+
+
+    }
+
+    &__flag{
+        box-shadow: 0 1rem 3rem rgba(0,0,0,.2);
+        width: 45%;
+        min-width: 12rem;
+        max-width: 17rem;
+
+    }
+}
+
+.country__info__section{
+    width: 90%;
+    margin: 0 auto;
+
+    @media (min-width: 62.5em) {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    @media (min-width: 87.5em) {
+        width: 80%;
+    }
+}
+
+.country__info__essentials{
+    margin-top: 5em;
+    gap: 3rem;
+    justify-content: center;
+    align-items: center;
+
+    @media (min-width: 62.5em) {
+        flex-direction: row;
+        flex-grow: 1;
+        justify-content: space-around;
+    }
+
+    @media (min-width: 131.25em) {
+        justify-content: center;
+    }
+}
+
+
+
+.country__info__graphs{
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr;
+
+    @media (min-width: 87.5em) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+.country__info__linechart{
+    margin-top: 10rem;
+}
+
+.linechart__title{
+    font-size: 3rem;
+    text-align: center;
+    color: #343a40;
+}
+
+
+.country__info__extra{
+    display: flex;
+    row-gap: 15rem;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 16rem;
+    margin-bottom: 16rem;
+}
+
+.country__info__error{
+    font-size: 3rem;
+}

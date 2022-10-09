@@ -18,9 +18,12 @@ function* main() {
     }
 }
 
+
+
 const useCountriesStore = create(set => ({
     countriesMapData : null,
     countriesArrayData: null,
+    countriesNameMapData: null,
     loading: false,
     hasErrors: false,
     fetch: async () => {
@@ -31,13 +34,18 @@ const useCountriesStore = create(set => ({
                 set(() => ({hasErrors: error, loading: false}))
             },
             data => {
-                const mapData = new Map(
-                    data.map(country => {
-                        return [country.countryInfo._id, country]
-                    })
-                )
-                set(() => ({countriesMapData: mapData, loading: false}))
-                set(() => ({countriesArrayData: data, loading: false}))
+                const idMap = new Map()
+                const countryNameMap = new Map()
+
+                for (const country of data) {
+                    idMap.set(country.countryInfo._id, country)
+                    countryNameMap.set(country.country, country)
+                }
+
+                set(() => ({countriesMapData: idMap}))
+                set(() => ({countriesNameMapData: countryNameMap}))
+                set(() => ({countriesArrayData: data}))
+                set(() => ({loading: false}))
             }
         )
     }

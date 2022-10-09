@@ -5,7 +5,7 @@ import MobileNavBar from "./MobileNavBar/MobileNavBar";
 import DesktopNavBar from "./DesktopNavBar/DesktopNavBar";
 import {useIntersectionObserver} from "../../hooks/useIntersectionObserver";
 
-const Navbar = ({onSearch, sectionCoordinates, shouldBeSticky}) => {
+const Navbar = ({onSearch, shouldBeSticky}) => {
 
     const headerRef = useRef(null);
 
@@ -14,8 +14,8 @@ const Navbar = ({onSearch, sectionCoordinates, shouldBeSticky}) => {
     ])
 
 
-    const renderDesktopBar =  () => <DesktopNavBar onSearch={onSearch} sectionCoordinates={sectionCoordinates}/>
-    const renderMobileBar = () => <MobileNavBar onSearch={onSearch}  sectionCoordinates={sectionCoordinates}/>
+    const renderDesktopBar =  () => <DesktopNavBar onSearch={onSearch} />
+    const renderMobileBar = () => <MobileNavBar onSearch={onSearch} />
 
     return (
         <header ref={headerRef} className={`${styles.header} ${!shouldBeSticky ? styles.sticky : null}`}>

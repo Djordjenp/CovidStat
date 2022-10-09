@@ -5,6 +5,16 @@
     cursor: pointer;
 }
 
+.search__wrapper{
+    display: flex;
+    align-items: center;
+}
+
+.search__link{
+    margin-right: 3rem;
+    font-size: 1.5rem;
+}
+
 .back__icon{
     color: var(--text-clr);
     width: 2.5rem;

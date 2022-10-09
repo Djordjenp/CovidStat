@@ -1,7 +1,10 @@
 import styles from './SearchBar.module.css'
 import {useState} from "react";
+import useScrollToCountriesStore from "../../store/scrollStore";
 
-const SearchBar = ({onSearch, sectionCoordinates}) => {
+const SearchBar = ({onSearch}) => {
+    const setShouldScroll = useScrollToCountriesStore((state) => state.setShouldScroll)
+
     const [enteredInput, setEnteredInput] = useState('')
 
     const inputHandler = (e) => {
@@ -11,11 +14,7 @@ const SearchBar = ({onSearch, sectionCoordinates}) => {
 
     const searchForCountry = (e) => {
         e.preventDefault();
-        window.scrollTo({
-            top: sectionCoordinates + window.scrollY,
-            behavior: 'smooth'
-        })
-
+        setShouldScroll(true)
         onSearch(enteredInput)
     }
 
