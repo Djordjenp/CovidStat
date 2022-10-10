@@ -25,7 +25,7 @@ const Paths = ({selectedCountry, features, mouseOverHandler, mouseLeaveHandler, 
     })
 
 
-    return  features ? features?.features?.map((feature, index) => <path ref={+feature.id === selectedCountry && feature.properties.name !== 'Ashmore and Cartier Is.' ? selectedCountryClick : undefined }  onClick={clicked(feature)} onMouseOver={mouseOverHandler(feature)} onMouseLeave={mouseLeaveHandler}  className={styles.svg__country} key={index} fill={fillHandler(feature)} d={path(feature)}/>) : null
+    return  features ? features?.features?.map((feature, index) => <path ref={+feature.id === selectedCountry && feature.properties.name !== 'Ashmore and Cartier Is.' ? selectedCountryClick : undefined }   onClick={clicked(feature)} onMouseOver={mouseOverHandler(feature)} onMouseLeave={mouseLeaveHandler}  className={styles.svg__country} key={index} fill={fillHandler(feature)} d={path(feature)}/>) : null
 }
 
 export default React.memo(Paths);

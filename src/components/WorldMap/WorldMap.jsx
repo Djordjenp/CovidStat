@@ -53,6 +53,12 @@ const WorldMap = () => {
     let { countryName } = useParams();
 
 
+    // Define zoom object
+    const zoom =  d3.zoom()
+        .scaleExtent([1, 20])
+        .translateExtent([[0, 0], [width, height]])
+        .on('zoom', zoomed)
+
     useEffect(() => {
         if (!countryName || !mapGeoJsonMap || !countriesNameMapData) return
 
@@ -69,6 +75,7 @@ const WorldMap = () => {
 
         d3.select(svgRef.current).transition().duration(650)
             .call(zoom.transform, d3.zoomIdentity.translate(translate[0],translate[1]).scale(scale) );
+
     }, [countryName, mapGeoJsonMap, svgRef.current, countriesNameMapData])
 
 
@@ -78,17 +85,13 @@ const WorldMap = () => {
         fetchGeoJson();
     }, [])
 
-    // Define zoom object
-    const zoom =  d3.zoom()
-        .scaleExtent([1, 20])
-        .translateExtent([[0, 0], [width, height]])
-        .on('zoom', zoomed)
+
 
 
     useEffect(() => {
         if (!svgRef.current) return;
         d3.select(svgRef.current).call(zoom);
-    }, [svgRef.current])
+    })
 
 
 
