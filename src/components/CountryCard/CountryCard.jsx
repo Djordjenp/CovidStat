@@ -17,12 +17,8 @@ const CountryCard = ({country, flag, continent, infected, recovered, deaths}) =>
         <figure onClick={goCountryPage} className={styles.country}>
 
             <header className={styles.country__header}>
-                <Flipped flipId={'flag'}>
-                    <img className={styles.country__img} src={flag} alt="Country Flag"/>
-                </Flipped>
-                <Flipped flipId={'country_name'}>
-                    <h4 className={styles.country__name}>{country}</h4>
-                </Flipped>
+                <img className={styles.country__img} src={flag} alt="Country Flag"/>
+                <h4 className={styles.country__name}>{country}</h4>
                 <span className={styles.country__continent}>{continent}</span>
             </header>
 

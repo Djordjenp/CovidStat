@@ -10,10 +10,6 @@
     align-items: center;
 }
 
-.search__link{
-    margin-right: 3rem;
-    font-size: 1.5rem;
-}
 
 .back__icon{
     color: var(--text-clr);
@@ -38,4 +34,14 @@
 .search__btn{
     width: 4rem;
     height: 3rem;
+}
+
+.navbar__link{
+    font-size: 1.3rem;
+    margin-right: 1.5rem;
+    
+    @media (min-width: 21.87em) {
+        font-size: 1.5rem;
+        margin-right: 3rem;
+    }
 }

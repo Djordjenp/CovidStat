@@ -2,7 +2,7 @@ import ContinentsSection from "../../components/ContinentsSection/ContinentsSect
 import CountriesSection from "../../components/CountriesSection/CountriesSection";
 import HomeHeader from "../../components/HomeHeader/HomeHeader";
 
-const Home = ({searchedCountry, sectionCoordinatesFn, setStickyNav}) => {
+const Home = ({searchedCountry, setStickyNav}) => {
 
 
 

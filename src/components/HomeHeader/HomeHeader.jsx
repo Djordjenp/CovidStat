@@ -19,6 +19,8 @@ const HomeHeader = ({setStickyNav}) => {
          rootMargin: "-60px",
      })
 
+
+
     useEffect(() => {
         setStickyNav(isIntersecting)
     }, [isIntersecting])

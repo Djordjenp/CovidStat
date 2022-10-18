@@ -9,6 +9,7 @@ import {debounce, isEmptyString, notEmpty, notEmptyString, notEqual, notNil, whe
 import useCountriesStore from "../../store/store";
 import {useLocation} from "react-router-dom";
 import useScrollToCountriesStore from "../../store/scrollStore";
+import useLoaderStore from "../../store/pieChartLoaderStore";
 
 
 const countriesLens = lensProp('countriesDisplayed')
@@ -45,12 +46,15 @@ const countriesReducer = (state, {type, val}) => {
 
 const CountriesSection = ({searchedCountry}) => {
 
-    const shouldScrollTo = useScrollToCountriesStore((state) => state.shouldScroll)
+
     const setShouldScroll = useScrollToCountriesStore((state) => state.setShouldScroll)
 
     const data = useCountriesStore(state => state.countriesArrayData)
     const fetchCountries = useCountriesStore(state => state.fetch)
     const error = useCountriesStore(state => state.hasErrors)
+
+    const pieChartLoaded = useLoaderStore(state => state.pieChartLoaded)
+
 
 
     let [countries, dispatchFn] = useReducer(countriesReducer, {
@@ -67,35 +71,36 @@ const CountriesSection = ({searchedCountry}) => {
     const isRefVisible = useInfinityScrollObserver(refForLazyLoading)
 
 
+    // Scroll To Countries Section
     useEffect(() => {
-        if (!shouldScrollTo) return
-
+        if (!pieChartLoaded) return
         sectionRef.current.scrollIntoView({behavior: 'smooth'})
         setShouldScroll(false)
-
-    }, [shouldScrollTo])
+    }, [pieChartLoaded])
 
 
     // Used when user searches for country
     useEffect(() => {
-        whenIs(searchedCountry)(notEmptyString)(() => {
+        if (notEmptyString(searchedCountry)){
             dispatchFn({type: "SET_IS_SEARCHING", val: true})
             const countryUserSearched = countries.countriesData.filter(country => {
                 return country.country.toLowerCase().includes(searchedCountry.toLowerCase())
             })
 
-            whenIs(countryUserSearched)(notEmpty)(() =>
-                dispatchFn({type: "SET_DISPLAYED_COUNTRIES", val: countryUserSearched.map(countryToCountryCard)})
-            )
-        })
 
-        whenIs (searchedCountry)(isEmptyString)(() => {
+            if (notEmpty(countryUserSearched)){
+                dispatchFn({type: "SET_DISPLAYED_COUNTRIES", val: countryUserSearched.map(countryToCountryCard)})
+            }
+        }
+
+
+        if (isEmptyString(searchedCountry)) {
             dispatchFn({type: "SET_IS_SEARCHING", val: false})
             dispatchFn({type: "SET_DISPLAYED_COUNTRIES", val: []})
             dispatchFn({type: "DISPLAY_MORE_COUNTRIES"})
-        })
+        }
 
-    }, [searchedCountry])
+    }, [searchedCountry, countries.countriesData])
 
     //used when data is fetched from server
     useEffect(() => {
@@ -109,10 +114,12 @@ const CountriesSection = ({searchedCountry}) => {
 
     //used when countries data set
     useEffect(() => {
-        whenIs(countries.countriesData)(notEmpty) (() => {
+        if (notEmpty(countries.countriesData)) {
             dispatchFn({type: "SET_LOADING", val: false})
-            dispatchFn({type: "DISPLAY_MORE_COUNTRIES"})
-        })
+            if (isEmptyString(searchedCountry)){
+                dispatchFn({type: "DISPLAY_MORE_COUNTRIES"})
+            }
+        }
     }, [countries.countriesData])
 
 
@@ -128,6 +135,8 @@ const CountriesSection = ({searchedCountry}) => {
         const [sortCriteria, sortOrder] = e.target.value.split("-")
         dispatchFn({type: "RESET_COUNTRIES", val: [sortCriteria, sortOrder]})
     }
+
+
 
     return (
         <section ref={sectionRef} style={{minHeight: error ? "0" : "90vh"}} className={styles['section-countries']} id={'section-countries'}>

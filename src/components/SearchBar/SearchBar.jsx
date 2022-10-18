@@ -1,11 +1,14 @@
 import styles from './SearchBar.module.css'
 import {useState} from "react";
 import useScrollToCountriesStore from "../../store/scrollStore";
+import {useLocation, useNavigate} from "react-router-dom";
 
 const SearchBar = ({onSearch}) => {
-    const setShouldScroll = useScrollToCountriesStore((state) => state.setShouldScroll)
 
+    const setShouldScroll = useScrollToCountriesStore((state) => state.setShouldScroll)
     const [enteredInput, setEnteredInput] = useState('')
+    const location = useLocation();
+    const navigate = useNavigate()
 
     const inputHandler = (e) => {
         setEnteredInput(e.target.value)
@@ -14,7 +17,13 @@ const SearchBar = ({onSearch}) => {
 
     const searchForCountry = (e) => {
         e.preventDefault();
-        setShouldScroll(true)
+        if (location.pathname === '/'){
+            setShouldScroll(true)
+        }else {
+            navigate(`/`)
+            setShouldScroll(true)
+        }
+
         onSearch(enteredInput)
     }
 

@@ -15,6 +15,7 @@ const ThePieChart = ({continentsData, hoveredArc, handleMouseOver, handleMouseLe
         { small: 500 },
     ])
 
+
     const arcsRef = useRef([])
     const selectedArcRef = hoveredArc ? arcsRef.current.find(arc => arc.getAttribute('id') === hoveredArc.id) : null;
 

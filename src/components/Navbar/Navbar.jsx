@@ -9,6 +9,7 @@ const Navbar = ({onSearch, shouldBeSticky}) => {
 
     const headerRef = useRef(null);
 
+
     const size = useResizeObserver(headerRef, [
         { small: 600 },
     ])

@@ -74,12 +74,8 @@ const CountryInfo = () => {
                 {  !countryData ? null :
                     <>
                         <div className={`flex-row flex-center margin-top-md ${styles.country__info__header}`}>
-                            <Flipped flipId={'country_name'}>
                                 <h1 className={styles.country__info__header__title}>{countryName}</h1>
-                            </Flipped>
-                            <Flipped flipId={'flag'}>
                                 <img className={styles.country__info__header__flag} src={countryData.countryInfo?.flag} alt="country flag"/>
-                            </Flipped>
                         </div>
 
                         <div className={`flex-col ${styles.country__info__essentials}`}>

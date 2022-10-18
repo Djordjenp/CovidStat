@@ -1,7 +1,9 @@
 .section-header{
+
+    min-height: 80rem;
     @media (min-width: 43.75em) {
         height: calc(100vh - 6rem);
-        min-height: 80rem;
+
         display: flex;
         flex-direction: column;
     }

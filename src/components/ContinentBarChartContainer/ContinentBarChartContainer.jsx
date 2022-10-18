@@ -1,10 +1,13 @@
 import styles from './ContinentBarChartContainer.module.css'
 import TheBarChart from "../Graphs/TheBarChart/TheBarChart";
 import useResizeObserver from "../../hooks/useResizeObserver";
-import {useRef} from "react";
+import { useRef} from "react";
 
 
 const ContinentBarChartContainer = ({continent, data, totalInfected}) => {
+
+
+
 
     const capitalizeContinent = continent.split(' ').map(name => name[0].toUpperCase() + name.slice(1, name.length)).join(' ');
 
@@ -13,6 +16,7 @@ const ContinentBarChartContainer = ({continent, data, totalInfected}) => {
     const size = useResizeObserver(continentRef, [
         { small: 800 },
     ])
+
 
 
     return (

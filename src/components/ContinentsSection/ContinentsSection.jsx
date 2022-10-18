@@ -3,7 +3,7 @@ import ContinentsPieChartContainer from "../ContinentsPieChartContainer/Continen
 import csv from '../../assets/SixContinentsData.csv'
 import ContinentBarChartContainer from "../ContinentBarChartContainer/ContinentBarChartContainer";
 import {numberWithCommas} from "../../helpers/utils";
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 const data = csv.reduce((prev,next) => {
     prev.africa.push({date: next.Dates, infected: next.Africa})
@@ -39,8 +39,12 @@ const total = {
 
 const ContinentsSection = () => {
 
+
+
+
+
     return (
-        <section className={styles['section-continental']}>
+        <section className={styles['section-continental']} >
             <ContinentsPieChartContainer />
             {Object.keys(data).map(cont => <ContinentBarChartContainer key={cont} continent={cont}  data={data[cont]} totalInfected={numberWithCommas(total[cont])} />)}
         </section>
