@@ -2,7 +2,6 @@ import styles from './CountryCard.module.css'
 import {pipe} from "ramda";
 import {prepProps} from "./CountryCardHelper";
 import { useNavigate } from "react-router-dom";
-import {Flipped} from "react-flip-toolkit";
 
 const CountryCard = ({country, flag, continent, infected, recovered, deaths}) => {
 
