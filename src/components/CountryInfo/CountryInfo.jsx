@@ -8,8 +8,6 @@ import {useEffect, useLayoutEffect, useReducer, useState} from "react";
 import LineChart from "../Graphs/LineChart/LineChart";
 import DataInfo from "../DataInfo/DataInfo";
 import Loading from "../Loading/Loading";
-import {Flipped} from "react-flip-toolkit";
-import {isNil} from "ramda";
 
 const todayDate = new Date().toLocaleDateString('en-US', {
     year: '2-digit',
